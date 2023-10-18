@@ -67,6 +67,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "linear",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -129,7 +130,7 @@
                     "expr": "rate(miner_bundle_simulate_success_count{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "format": "time_series",
                     "hide": false,
-                    "legendFormat": "success",
+                    "legendFormat": "success {{service}}",
                     "range": true,
                     "refId": "A"
                 },
@@ -141,7 +142,7 @@
                     "editorMode": "code",
                     "expr": "rate(miner_bundle_simulate_failed_count{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "format": "time_series",
-                    "legendFormat": "fail",
+                    "legendFormat": "fail {{service}}",
                     "range": true,
                     "refId": "B"
                 }
@@ -173,6 +174,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "linear",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -235,7 +237,7 @@
                     "expr": "rate(miner_block_build_count{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "format": "time_series",
                     "hide": false,
-                    "legendFormat": "build",
+                    "legendFormat": "build {{service}}",
                     "range": true,
                     "refId": "A"
                 },
@@ -248,7 +250,7 @@
                     "expr": "rate(miner_block_merge_count{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "format": "time_series",
                     "hide": false,
-                    "legendFormat": "merge",
+                    "legendFormat": "merge {{service}}",
                     "range": true,
                     "refId": "C"
                 }
@@ -280,6 +282,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "linear",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -343,7 +346,7 @@
                     "exemplar": false,
                     "expr": "rate(miner_block_profit_gauge{client_name=~\"$client_name\", service=~\"$instance\"}[$rate]) / 1000000000",
                     "hide": false,
-                    "legendFormat": "build",
+                    "legendFormat": "build {{service}}",
                     "range": true,
                     "refId": "A"
                 }
@@ -388,6 +391,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "linear",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -448,7 +452,7 @@
                     },
                     "editorMode": "code",
                     "expr": "rate(rpc_duration_eth_callBundle_success_count{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
-                    "legendFormat": "success",
+                    "legendFormat": "success {{service}}",
                     "range": true,
                     "refId": "A"
                 },
@@ -460,7 +464,7 @@
                     "editorMode": "code",
                     "expr": "rate(rpc_duration_eth_callBundle_failure_count{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "hide": false,
-                    "legendFormat": "failure",
+                    "legendFormat": "failure {{service}}",
                     "range": true,
                     "refId": "B"
                 }
@@ -492,6 +496,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "linear",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -584,6 +589,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "linear",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -689,6 +695,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "linear",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -749,7 +756,7 @@
                     },
                     "editorMode": "code",
                     "expr": "rate(rpc_duration_flashbots_validateBuilderSubmissionV2_success_count{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
-                    "legendFormat": "success",
+                    "legendFormat": "success {{service}}",
                     "range": true,
                     "refId": "A"
                 },
@@ -761,7 +768,7 @@
                     "editorMode": "code",
                     "expr": "rate(rpc_duration_flashbots_validateBuilderSubmissionV2_failure_count{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "hide": false,
-                    "legendFormat": "failure",
+                    "legendFormat": "failure {{service}}",
                     "range": true,
                     "refId": "B"
                 }
@@ -793,6 +800,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "linear",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -858,7 +866,7 @@
                     "refId": "A"
                 }
             ],
-            "title": "Durations of successful eth_callBundle calls",
+            "title": "Durations of successful flashbots_validateBuilderSubmissionV2 calls",
             "type": "timeseries"
         },
         {
@@ -885,6 +893,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "linear",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -944,7 +953,7 @@
                         "uid": "${datasource}"
                     },
                     "editorMode": "code",
-                    "expr": "rpc_duration_flashbots_validateBuilderSubmissionV2_success{quantile=\"$quantile\", client_name=~\"$client_name\", service=~\"$instance\"} / 1000",
+                    "expr": "rpc_duration_flashbots_validateBuilderSubmissionV2_failure{quantile=\"$quantile\", client_name=~\"$client_name\", service=~\"$instance\"} / 1000",
                     "legendFormat": "{{service}}",
                     "range": true,
                     "refId": "A"
@@ -1017,7 +1026,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1036,7 +1045,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "system",
+                    "legendFormat": "system {{service}}",
                     "range": true,
                     "refId": "A"
                 },
@@ -1050,7 +1059,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "iowait",
+                    "legendFormat": "iowait {{service}}",
                     "range": true,
                     "refId": "B"
                 },
@@ -1064,7 +1073,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "geth",
+                    "legendFormat": "geth {{service}}",
                     "range": true,
                     "refId": "C"
                 }
@@ -1137,7 +1146,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1156,7 +1165,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "alloc",
+                    "legendFormat": "alloc {{service}}",
                     "range": true,
                     "refId": "A"
                 },
@@ -1170,7 +1179,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "used",
+                    "legendFormat": "used {{service}}",
                     "range": true,
                     "refId": "B"
                 },
@@ -1184,7 +1193,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "held",
+                    "legendFormat": "held {{service}}",
                     "range": true,
                     "refId": "C"
                 }
@@ -1257,7 +1266,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1276,7 +1285,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "read",
+                    "legendFormat": "read {{service}}",
                     "range": true,
                     "refId": "A"
                 },
@@ -1290,7 +1299,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "write",
+                    "legendFormat": "write {{service}}",
                     "range": true,
                     "refId": "B"
                 }
@@ -1389,7 +1398,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1408,7 +1417,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "ingress",
+                    "legendFormat": "ingress {{service}}",
                     "range": true,
                     "refId": "B"
                 },
@@ -1422,7 +1431,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "egress",
+                    "legendFormat": "egress {{service}}",
                     "range": true,
                     "refId": "C"
                 }
@@ -1495,7 +1504,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -1514,7 +1523,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "peers",
+                    "legendFormat": "peers {{service}}",
                     "range": true,
                     "refId": "A"
                 },
@@ -1528,7 +1537,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "dials",
+                    "legendFormat": "dials {{service}}",
                     "range": true,
                     "refId": "B"
                 },
@@ -1542,7 +1551,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "serves",
+                    "legendFormat": "serves {{service}}",
                     "range": true,
                     "refId": "C"
                 }
@@ -1630,7 +1639,8 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "rgb(252, 252, 252)"
+                                "color": "rgb(252, 252, 252)",
+                                "value": null
                             }
                         ]
                     },
@@ -1639,8 +1649,8 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 2,
-                "w": 3,
+                "h": 3,
+                "w": 6,
                 "x": 0,
                 "y": 36
             },
@@ -1660,9 +1670,9 @@
                     "values": false
                 },
                 "text": {},
-                "textMode": "auto"
+                "textMode": "value"
             },
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "targets": [
                 {
                     "datasource": {
@@ -1707,6 +1717,7 @@
                             "tooltip": false,
                             "viz": false
                         },
+                        "insertNulls": false,
                         "lineInterpolation": "stepAfter",
                         "lineWidth": 1,
                         "pointSize": 5,
@@ -1728,7 +1739,8 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "green"
+                                "color": "green",
+                                "value": null
                             }
                         ]
                     },
@@ -1737,9 +1749,9 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 6,
-                "w": 9,
-                "x": 3,
+                "h": 9,
+                "w": 18,
+                "x": 6,
                 "y": 36
             },
             "id": 110,
@@ -1768,7 +1780,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "header",
+                    "legendFormat": "header {{service}}",
                     "range": true,
                     "refId": "A"
                 },
@@ -1782,7 +1794,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "receipt",
+                    "legendFormat": "receipt {{service}}",
                     "range": true,
                     "refId": "B"
                 },
@@ -1796,7 +1808,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "block",
+                    "legendFormat": "block {{service}}",
                     "range": true,
                     "refId": "C"
                 }
@@ -1829,7 +1841,164 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "rgb(255, 255, 255)"
+                                "color": "rgb(255, 255, 255)",
+                                "value": null
+                            }
+                        ]
+                    },
+                    "unit": "locale"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 6,
+                "x": 0,
+                "y": 39
+            },
+            "id": 111,
+            "links": [],
+            "maxDataPoints": 100,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.1.2",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "editorMode": "code",
+                    "expr": "max(chain_head_receipt{client_name=~\"$client_name\", service=~\"$instance\"})",
+                    "format": "time_series",
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "{{service}}",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "Latest receipt",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [
+                        {
+                            "options": {
+                                "match": "null",
+                                "result": {
+                                    "text": "N/A"
+                                }
+                            },
+                            "type": "special"
+                        }
+                    ],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "rgb(255, 255, 255)",
+                                "value": null
+                            }
+                        ]
+                    },
+                    "unit": "locale"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 3,
+                "w": 6,
+                "x": 0,
+                "y": 42
+            },
+            "id": 109,
+            "links": [],
+            "maxDataPoints": 100,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "horizontal",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "text": {},
+                "textMode": "auto"
+            },
+            "pluginVersion": "10.1.2",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "prometheus",
+                        "uid": "${datasource}"
+                    },
+                    "editorMode": "code",
+                    "expr": "max(chain_head_block{client_name=~\"$client_name\", service=~\"$instance\"})",
+                    "format": "time_series",
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "{{service}}",
+                    "range": true,
+                    "refId": "A"
+                }
+            ],
+            "title": "Latest block",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "prometheus",
+                "uid": "${datasource}"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [
+                        {
+                            "options": {
+                                "match": "null",
+                                "result": {
+                                    "text": "N/A"
+                                }
+                            },
+                            "type": "special"
+                        }
+                    ],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "rgb(255, 255, 255)",
+                                "value": null
                             }
                         ]
                     },
@@ -1838,10 +2007,10 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 2,
-                "w": 3,
-                "x": 12,
-                "y": 36
+                "h": 3,
+                "w": 6,
+                "x": 0,
+                "y": 45
             },
             "id": 113,
             "links": [],
@@ -1861,7 +2030,7 @@
                 "text": {},
                 "textMode": "auto"
             },
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "targets": [
                 {
                     "datasource": {
@@ -1893,10 +2062,10 @@
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
-                "h": 6,
-                "w": 9,
-                "x": 15,
-                "y": 36
+                "h": 9,
+                "w": 18,
+                "x": 6,
+                "y": 45
             },
             "hiddenSeries": false,
             "id": 116,
@@ -1917,7 +2086,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -1936,7 +2105,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "executable",
+                    "legendFormat": "executable {{service}}",
                     "range": true,
                     "refId": "A"
                 },
@@ -1950,7 +2119,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "gapped",
+                    "legendFormat": "gapped {{service}}",
                     "range": true,
                     "refId": "B"
                 },
@@ -1964,7 +2133,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "local",
+                    "legendFormat": "local {{service}}",
                     "range": true,
                     "refId": "C"
                 }
@@ -2024,84 +2193,8 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "rgb(255, 255, 255)"
-                            }
-                        ]
-                    },
-                    "unit": "locale"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 2,
-                "w": 3,
-                "x": 0,
-                "y": 38
-            },
-            "id": 111,
-            "links": [],
-            "maxDataPoints": 100,
-            "options": {
-                "colorMode": "value",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "text": {},
-                "textMode": "auto"
-            },
-            "pluginVersion": "9.4.7",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${datasource}"
-                    },
-                    "editorMode": "code",
-                    "expr": "max(chain_head_receipt{client_name=~\"$client_name\", service=~\"$instance\"})",
-                    "format": "time_series",
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "{{service}}",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "Latest receipt",
-            "type": "stat"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "${datasource}"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [
-                        {
-                            "options": {
-                                "match": "null",
-                                "result": {
-                                    "text": "N/A"
-                                }
-                            },
-                            "type": "special"
-                        }
-                    ],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "rgb(255, 255, 255)"
+                                "color": "rgb(255, 255, 255)",
+                                "value": null
                             }
                         ]
                     },
@@ -2110,10 +2203,10 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 2,
-                "w": 3,
-                "x": 12,
-                "y": 38
+                "h": 3,
+                "w": 6,
+                "x": 0,
+                "y": 48
             },
             "id": 114,
             "links": [],
@@ -2133,7 +2226,7 @@
                 "text": {},
                 "textMode": "auto"
             },
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "targets": [
                 {
                     "datasource": {
@@ -2178,84 +2271,8 @@
                         "mode": "absolute",
                         "steps": [
                             {
-                                "color": "rgb(255, 255, 255)"
-                            }
-                        ]
-                    },
-                    "unit": "locale"
-                },
-                "overrides": []
-            },
-            "gridPos": {
-                "h": 2,
-                "w": 3,
-                "x": 0,
-                "y": 40
-            },
-            "id": 109,
-            "links": [],
-            "maxDataPoints": 100,
-            "options": {
-                "colorMode": "value",
-                "graphMode": "none",
-                "justifyMode": "auto",
-                "orientation": "horizontal",
-                "reduceOptions": {
-                    "calcs": [
-                        "lastNotNull"
-                    ],
-                    "fields": "",
-                    "values": false
-                },
-                "text": {},
-                "textMode": "auto"
-            },
-            "pluginVersion": "9.4.7",
-            "targets": [
-                {
-                    "datasource": {
-                        "type": "prometheus",
-                        "uid": "${datasource}"
-                    },
-                    "editorMode": "code",
-                    "expr": "max(chain_head_block{client_name=~\"$client_name\", service=~\"$instance\"})",
-                    "format": "time_series",
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "{{service}}",
-                    "range": true,
-                    "refId": "A"
-                }
-            ],
-            "title": "Latest block",
-            "type": "stat"
-        },
-        {
-            "datasource": {
-                "type": "prometheus",
-                "uid": "${datasource}"
-            },
-            "fieldConfig": {
-                "defaults": {
-                    "color": {
-                        "mode": "thresholds"
-                    },
-                    "mappings": [
-                        {
-                            "options": {
-                                "match": "null",
-                                "result": {
-                                    "text": "N/A"
-                                }
-                            },
-                            "type": "special"
-                        }
-                    ],
-                    "thresholds": {
-                        "mode": "absolute",
-                        "steps": [
-                            {
-                                "color": "rgb(255, 255, 255)"
+                                "color": "rgb(255, 255, 255)",
+                                "value": null
                             }
                         ]
                     },
@@ -2264,10 +2281,10 @@
                 "overrides": []
             },
             "gridPos": {
-                "h": 2,
-                "w": 3,
-                "x": 12,
-                "y": 40
+                "h": 3,
+                "w": 6,
+                "x": 0,
+                "y": 51
             },
             "id": 115,
             "links": [],
@@ -2287,7 +2304,7 @@
                 "text": {},
                 "textMode": "auto"
             },
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "targets": [
                 {
                     "datasource": {
@@ -2322,7 +2339,7 @@
                 "h": 11,
                 "w": 24,
                 "x": 0,
-                "y": 42
+                "y": 54
             },
             "hiddenSeries": false,
             "id": 112,
@@ -2345,7 +2362,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -2364,7 +2381,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "execution (q=$quantile)",
+                    "legendFormat": "execution (q=$quantile) {{service}}",
                     "range": true,
                     "refId": "A"
                 },
@@ -2379,7 +2396,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "validation (q=$quantile)",
+                    "legendFormat": "validation (q=$quantile) {{service}}",
                     "range": true,
                     "refId": "B"
                 },
@@ -2394,7 +2411,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "commit (q=$quantile)",
+                    "legendFormat": "commit (q=$quantile) {{service}}",
                     "range": true,
                     "refId": "C"
                 },
@@ -2408,7 +2425,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "account read (q=$quantile)",
+                    "legendFormat": "account read (q=$quantile) {{service}}",
                     "range": true,
                     "refId": "D"
                 },
@@ -2422,7 +2439,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "account update (q=$quantile)",
+                    "legendFormat": "account update (q=$quantile) {{service}}",
                     "range": true,
                     "refId": "E"
                 },
@@ -2436,7 +2453,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "account hashe (q=$quantile)",
+                    "legendFormat": "account hashe (q=$quantile) {{service}}",
                     "range": true,
                     "refId": "F"
                 },
@@ -2450,7 +2467,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "account commit (q=$quantile)",
+                    "legendFormat": "account commit (q=$quantile) {{service}}",
                     "range": true,
                     "refId": "G"
                 },
@@ -2464,7 +2481,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "storage read (q=$quantile)",
+                    "legendFormat": "storage read (q=$quantile) {{service}}",
                     "range": true,
                     "refId": "H"
                 },
@@ -2478,7 +2495,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "storage update (q=$quantile)",
+                    "legendFormat": "storage update (q=$quantile) {{service}}",
                     "range": true,
                     "refId": "I"
                 },
@@ -2492,7 +2509,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "storage hashe (q=$quantile)",
+                    "legendFormat": "storage hashe (q=$quantile) {{service}}",
                     "range": true,
                     "refId": "J"
                 },
@@ -2506,7 +2523,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "storage commit (q=$quantile)",
+                    "legendFormat": "storage commit (q=$quantile) {{service}}",
                     "range": true,
                     "refId": "K"
                 }
@@ -2556,7 +2573,7 @@
                 "h": 10,
                 "w": 24,
                 "x": 0,
-                "y": 53
+                "y": 65
             },
             "hiddenSeries": false,
             "id": 117,
@@ -2579,7 +2596,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -2598,7 +2615,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "valid",
+                    "legendFormat": "valid {{service}}",
                     "range": true,
                     "refId": "K"
                 },
@@ -2612,7 +2629,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "invalid",
+                    "legendFormat": "invalid {{service}}",
                     "range": true,
                     "refId": "A"
                 },
@@ -2627,7 +2644,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "underpriced",
+                    "legendFormat": "underpriced {{service}}",
                     "range": true,
                     "refId": "B"
                 },
@@ -2642,7 +2659,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "executable discard",
+                    "legendFormat": "executable discard {{service}}",
                     "range": true,
                     "refId": "C"
                 },
@@ -2656,7 +2673,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "executable replace",
+                    "legendFormat": "executable replace {{service}}",
                     "range": true,
                     "refId": "D"
                 },
@@ -2670,7 +2687,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "executable ratelimit",
+                    "legendFormat": "executable ratelimit {{service}}",
                     "range": true,
                     "refId": "E"
                 },
@@ -2684,7 +2701,7 @@
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "executable nofunds",
+                    "legendFormat": "executable nofunds {{service}}",
                     "range": true,
                     "refId": "F"
                 },
@@ -2699,7 +2716,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "gapped discard",
+                    "legendFormat": "gapped discard {{service}}",
                     "range": true,
                     "refId": "G"
                 },
@@ -2714,7 +2731,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "gapped replace",
+                    "legendFormat": "gapped replace {{service}}",
                     "range": true,
                     "refId": "H"
                 },
@@ -2729,7 +2746,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "gapped ratelimit",
+                    "legendFormat": "gapped ratelimit {{service}}",
                     "range": true,
                     "refId": "I"
                 },
@@ -2744,7 +2761,7 @@
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "gapped nofunds",
+                    "legendFormat": "gapped nofunds {{service}}",
                     "range": true,
                     "refId": "J"
                 }
@@ -2789,7 +2806,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 63
+                "y": 75
             },
             "id": 17,
             "panels": [],
@@ -2817,10 +2834,10 @@
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
-                "h": 6,
+                "h": 8,
                 "w": 8,
                 "x": 0,
-                "y": 64
+                "y": 76
             },
             "hiddenSeries": false,
             "id": 35,
@@ -2841,7 +2858,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2855,11 +2872,13 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "rate(eth_db_chaindata_disk_read{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "leveldb read",
+                    "legendFormat": "leveldb read {{service}}",
+                    "range": true,
                     "refId": "B"
                 },
                 {
@@ -2867,11 +2886,13 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "rate(eth_db_chaindata_disk_write{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "leveldb write",
+                    "legendFormat": "leveldb write {{service}}",
+                    "range": true,
                     "refId": "A"
                 },
                 {
@@ -2879,11 +2900,13 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "rate(eth_db_chaindata_ancient_read{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "ancient read",
+                    "legendFormat": "ancient read {{service}}",
+                    "range": true,
                     "refId": "C"
                 },
                 {
@@ -2891,11 +2914,13 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "rate(eth_db_chaindata_ancient_write{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "ancient write",
+                    "legendFormat": "ancient write {{service}}",
+                    "range": true,
                     "refId": "D"
                 }
             ],
@@ -2941,10 +2966,10 @@
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
-                "h": 6,
+                "h": 8,
                 "w": 8,
                 "x": 8,
-                "y": 64
+                "y": 76
             },
             "hiddenSeries": false,
             "id": 118,
@@ -2965,7 +2990,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -2979,11 +3004,13 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "eth_db_chaindata_disk_read{client_name=~\"$client_name\", service=~\"$instance\"}",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "leveldb read",
+                    "legendFormat": "leveldb read {{service}}",
+                    "range": true,
                     "refId": "B"
                 },
                 {
@@ -2991,11 +3018,13 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "eth_db_chaindata_disk_write{client_name=~\"$client_name\", service=~\"$instance\"}",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "leveldb write",
+                    "legendFormat": "leveldb write {{service}}",
+                    "range": true,
                     "refId": "A"
                 },
                 {
@@ -3003,11 +3032,13 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "eth_db_chaindata_ancient_read{client_name=~\"$client_name\", service=~\"$instance\"}",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "ancient read",
+                    "legendFormat": "ancient read {{service}}",
+                    "range": true,
                     "refId": "C"
                 },
                 {
@@ -3015,11 +3046,13 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "eth_db_chaindata_ancient_write{client_name=~\"$client_name\", service=~\"$instance\"}",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "ancient write",
+                    "legendFormat": "ancient write {{service}}",
+                    "range": true,
                     "refId": "D"
                 }
             ],
@@ -3065,10 +3098,10 @@
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
-                "h": 6,
+                "h": 8,
                 "w": 8,
                 "x": 16,
-                "y": 64
+                "y": 76
             },
             "hiddenSeries": false,
             "id": 119,
@@ -3091,7 +3124,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -3105,11 +3138,13 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "eth_db_chaindata_disk_size{client_name=~\"$client_name\", service=~\"$instance\"}",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "leveldb",
+                    "legendFormat": "leveldb {{service}}",
+                    "range": true,
                     "refId": "B"
                 },
                 {
@@ -3117,11 +3152,13 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "eth_db_chaindata_ancient_size{client_name=~\"$client_name\", service=~\"$instance\"}",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "ancient",
+                    "legendFormat": "ancient {{service}}",
+                    "range": true,
                     "refId": "A"
                 }
             ],
@@ -3165,7 +3202,7 @@
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 70
+                "y": 84
             },
             "id": 37,
             "panels": [],
@@ -3196,7 +3233,7 @@
                 "h": 6,
                 "w": 12,
                 "x": 0,
-                "y": 71
+                "y": 85
             },
             "hiddenSeries": false,
             "id": 120,
@@ -3217,7 +3254,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -3231,12 +3268,14 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "rate(trie_memcache_clean_read{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "format": "time_series",
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "hit",
+                    "legendFormat": "hit {{service}}",
+                    "range": true,
                     "refId": "C"
                 },
                 {
@@ -3244,12 +3283,14 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "rate(trie_memcache_clean_write{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "format": "time_series",
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "miss",
+                    "legendFormat": "miss {{service}}",
+                    "range": true,
                     "refId": "B"
                 }
             ],
@@ -3298,7 +3339,7 @@
                 "h": 6,
                 "w": 12,
                 "x": 12,
-                "y": 71
+                "y": 85
             },
             "hiddenSeries": false,
             "id": 56,
@@ -3319,7 +3360,7 @@
                 "alertThreshold": true
             },
             "percentage": false,
-            "pluginVersion": "9.4.7",
+            "pluginVersion": "10.1.2",
             "pointradius": 5,
             "points": false,
             "renderer": "flot",
@@ -3333,12 +3374,14 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "rate(trie_memcache_gc_size{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "format": "time_series",
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "gc",
+                    "legendFormat": "gc {{service}}",
+                    "range": true,
                     "refId": "C"
                 },
                 {
@@ -3346,12 +3389,14 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "rate(trie_memcache_flush_size{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "format": "time_series",
                     "hide": false,
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "overflow",
+                    "legendFormat": "overflow {{service}}",
+                    "range": true,
                     "refId": "B"
                 },
                 {
@@ -3359,11 +3404,13 @@
                         "type": "prometheus",
                         "uid": "${datasource}"
                     },
+                    "editorMode": "code",
                     "expr": "rate(trie_memcache_commit_size{client_name=~\"$client_name\", service=~\"$instance\"}[$rate])",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
-                    "legendFormat": "commit",
+                    "legendFormat": "commit {{service}}",
+                    "range": true,
                     "refId": "A"
                 }
             ],
@@ -3400,7 +3447,7 @@
     ],
     "refresh": "10s",
     "revision": 1,
-    "schemaVersion": 37,
+    "schemaVersion": 38,
     "style": "dark",
     "tags": [],
     "templating": {
@@ -3409,7 +3456,7 @@
                 "current": {
                     "selected": false,
                     "text": "Prometheus",
-                    "value": "Prometheus"
+                    "value": "PBFA97CFB590B2093"
                 },
                 "hide": 0,
                 "includeAll": false,
@@ -3427,8 +3474,12 @@
             {
                 "current": {
                     "selected": true,
-                    "text": "el-2-geth-lighthouse",
-                    "value": "el-2-geth-lighthouse"
+                    "text": [
+                        "All"
+                    ],
+                    "value": [
+                        "$__all"
+                    ]
                 },
                 "datasource": {
                     "type": "prometheus",
@@ -3436,9 +3487,9 @@
                 },
                 "definition": "label_values(chain_head_block{client_name=\"$client_name\"}, service)",
                 "hide": 1,
-                "includeAll": false,
+                "includeAll": true,
                 "label": "Instance",
-                "multi": false,
+                "multi": true,
                 "name": "instance",
                 "options": [],
                 "query": {
@@ -3556,7 +3607,7 @@
         ]
     },
     "time": {
-        "from": "now-24h",
+        "from": "now-5m",
         "to": "now"
     },
     "timepicker": {
@@ -3585,7 +3636,7 @@
         ]
     },
     "timezone": "",
-    "title": "Geth Overview",
+    "title": "Geth Builder Overview",
     "uid": "FPpjH6Hik",
     "version": 1,
     "weekStart": ""
