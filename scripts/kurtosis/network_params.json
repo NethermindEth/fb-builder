@@ -48,11 +48,11 @@
     "mev_params": {
         "mev_flood_seconds_per_bundle": 13,
         "launch_custom_flood": true,
-        "mev_flood_extra_args": ["--txsPerBundle=250"],
+        "mev_flood_extra_args": ["--txsPerBundle=100"],
         "mev_flood_image": "flashbots/mev-flood:0.0.9",
-        "mev_relay_image": "flashbots/mev-boost-relay:0.26",
+        "mev_relay_image": "flashbots/mev-boost-relay:0.27",
         "mev_boost_image": "flashbots/mev-boost:1.6",
-        "mev_builder_image": "ethpandaops/flashbots-builder:main-45e865e"
+        "mev_builder_image": "flashbots/builder:latest"
     },
     "additional_services": [
         "tx_spammer",
@@ -61,7 +61,7 @@
         "dora",
         "prometheus_grafana"
     ],
-    "tx_spammer_params": {"tx_spammer_extra_args": ["--txcount=250"]},
+    "tx_spammer_params": {"tx_spammer_extra_args": ["--txcount=100"]},
     "grafana_additional_dashboards": [
         "github.com/flashbots/builder-startup-script/data/grafana/dashboard.json",
     	"github.com/flashbots/builder-startup-script/data/grafana"
