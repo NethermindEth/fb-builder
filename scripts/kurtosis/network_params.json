@@ -15,7 +15,7 @@
             ]
         },
         {
-            "el_client_type": "geth",
+            "el_client_type": "REPLACE_WITH_BUILDER",
             "el_client_image": "ethpandaops/flashbots-builder:main-45e865e",
             "el_client_log_level": "",
             "cl_client_type": "lighthouse",

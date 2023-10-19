@@ -20,7 +20,7 @@ func build(imageTag string, buildDir string, buildDockerfilePath string) {
 	runCommand(cmd)
 }
 
-func update_config(imageTag string, imageArgs string, filename ...string) {
+func update_config(imageTag string, imageArgs string, kurtosisNetworkScriptFolder string, filename ...string) {
 	// Determine the filename. If not provided, default to "network_params.json".
 	var file string
 	if len(filename) > 0 {
@@ -53,7 +53,8 @@ func update_config(imageTag string, imageArgs string, filename ...string) {
 			}
 
 			// Check if the participant is the one with "el_client_type": "geth"
-			if p["el_client_type"] == "geth" {
+			if p["el_client_type"] == "REPLACE_WITH_BUILDER" {
+				p["el_client_type"] = "geth"
 				// Modify the participant entry as needed
 				p["el_client_image"] = imageTag
 
@@ -71,6 +72,8 @@ func update_config(imageTag string, imageArgs string, filename ...string) {
 				} else {
 					fmt.Println("Error: el_extra_params is not an array of strings")
 				}
+
+				fmt.Println("Detected and updated BUILDER config: ", p)
 				break // Exit the loop once the participant is found and updated
 			}
 		}
@@ -90,7 +93,7 @@ func update_config(imageTag string, imageArgs string, filename ...string) {
 	fmt.Println(string(modifiedContent))
 
 	// Save the modified content back to the file
-	//err = ioutil.WriteFile("network_params.json", modifiedContent, os.ModePerm)
+	err = ioutil.WriteFile(kurtosisNetworkScriptFolder+"/network_params_tmp.json", modifiedContent, os.ModePerm)
 	if err != nil {
 		fmt.Println("Error writing the modified content to the file:", err)
 	}
@@ -105,7 +108,7 @@ func run(imageTag, imageArgs, enclaveName string, maxSteps int, kurtosisPath, ku
 		"kurtosis_path":           kurtosisPath,
 		"kurtosis_network_config": kurtosisNetworkScriptFolder,
 	}*/
-	update_config(imageTag, imageArgs, kurtosisNetConfigPath)
+	update_config(imageTag, imageArgs, kurtosisNetworkScriptFolder, kurtosisNetConfigPath)
 
 	cmd := fmt.Sprintf("%s run --enclave %s %s", kurtosisPath, enclaveName, kurtosisNetworkScriptFolder)
 	runCommand(cmd)

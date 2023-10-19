@@ -51,7 +51,6 @@ To run script `cd` into this (`./scripts`) folder.
       - `-a`: (Optional) Additional builder arguments.
       - `-s`: (Optional) Max steps (integer). Default `-1` for "unlimited".
       - `-k`: (Optional) Path to `kurtosis` executable. Defaults to `kurtosis`.
-      - `-c`: (Required) Kurtosis network config path to *ethereum-package* repo.
    - Example:
      ```
      go run emulate_network.go run -t=imageTag -a=imageArgs -n=enclaveName -k=/path/to/kurtosis
@@ -76,7 +75,7 @@ To run script `cd` into this (`./scripts`) folder.
 
 ## Known issues
 ### Kurtosis errors on network start
-Sometimes errors may stop Kurtosis from starting a new enclave. 
+In case of system resource related errors or on windows docker restore after sleep Kurtosis may have trouble starting a new enclave. 
 1. Make sure you have no valuable containers up and running in enclaves or docker
 2. To clean up Kurtosis call `kurtosis clean -a`
 3. To clean up docker run `docker rm -vf $(docker ps -aq)`
