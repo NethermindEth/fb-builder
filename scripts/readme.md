@@ -39,7 +39,7 @@ To run script `cd` into this (`./scripts`) folder.
    - Options:
       - `-t`:          (Optional) Image tag for the Docker build. Defaults to `flashbots/builder:dev`.
       - `-d`           (Optional) Image Build directory. Defaults to `".."`
-      - `-f`           (Optional) Build dockerfile path. Defaults to `"../Dockerfile"`. Use `"./Dockerfile.debug"` for debug capabileties.
+      - `-f`           (Optional) Build dockerfile path. Defaults to `"../Dockerfile"`. Use `"./Dockerfile.debug"` for debug capabilities.
       
    - Example:
       ```
